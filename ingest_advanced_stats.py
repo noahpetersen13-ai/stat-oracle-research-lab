@@ -1,5 +1,6 @@
 import os
 import requests
+import time
 import psycopg2
 from psycopg2.extras import Json
 
@@ -21,6 +22,8 @@ def fetch_advanced_stats(season: int):
     while True:
         if cursor:
             params["cursor"] = cursor
+
+        time.sleep(1)
 
         response = requests.get(url, headers=headers, params=params)
         response.raise_for_status()
