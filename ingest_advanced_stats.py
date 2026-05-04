@@ -30,6 +30,7 @@ def fetch_advanced_stats(season: int):
 
         payload = response.json()
         all_stats.extend(payload.get("data", []))
+        print(f"Fetched {len(all_stats)} rows so far...")
 
         cursor = payload.get("meta", {}).get("next_cursor")
         if not cursor:
