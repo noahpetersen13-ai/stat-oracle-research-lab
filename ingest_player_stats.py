@@ -7,6 +7,12 @@ from psycopg2.extras import Json
 BALLDONTLIE_API_KEY = os.getenv("BALLDONTLIE_API_KEY")
 DATABASE_URL = os.getenv("DATABASE_URL")
 
+if not BALLDONTLIE_API_KEY:
+    raise RuntimeError("Missing BALLDONTLIE_API_KEY")
+
+if not DATABASE_URL:
+    raise RuntimeError("Missing DATABASE_URL")
+
 
 def save_page(conn, stats):
     cur = conn.cursor()
